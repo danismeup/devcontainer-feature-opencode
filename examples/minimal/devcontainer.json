@@ -1,0 +1,39 @@
+// =============================================================================
+// Minimal .devcontainer/devcontainer.json for a project using OpenCode.
+// Copy this file to your repo at: .devcontainer/devcontainer.json
+// =============================================================================
+{
+  "name": "${localWorkspaceFolderBasename}-dev",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+
+  // Install OpenCode via the shared feature
+  "features": {
+    "ghcr.io/danismeup/devcontainer-feature-opencode/opencode:1": {
+      "version": "latest",
+      "webPort": "4096",
+      "startWebOnCreate": false
+    }
+  },
+
+  // OpenCode stores data under /workspaces so it survives container rebuilds
+  "containerEnv": {
+    "OPENCODE_WEB_PORT": "4096"
+  },
+
+  // Forward the OpenCode web UI port — Codespaces auto-opens it in the browser
+  "forwardPorts": [4096],
+
+  // Start the OpenCode web UI automatically when the Codespace starts
+  // Remove this line if you prefer to launch it manually with: opencode-web-start &
+  "postStartCommand": "opencode-web-start &",
+
+  // Recommended VS Code extensions
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.copilot",
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  }
+}

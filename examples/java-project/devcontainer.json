@@ -1,0 +1,34 @@
+// =============================================================================
+// .devcontainer/devcontainer.json — Java / Maven project with OpenCode
+// =============================================================================
+{
+  "name": "${localWorkspaceFolderBasename}-java-dev",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+
+  "features": {
+    "ghcr.io/danismeup/devcontainer-feature-opencode/opencode:1": {
+      "webPort": "4096"
+    },
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "installMaven": true
+    }
+  },
+
+  "containerEnv": {
+    "OPENCODE_WEB_PORT": "4096"
+  },
+
+  "forwardPorts": [4096, 8080],
+
+  "postStartCommand": "opencode-web-start &",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "redhat.java"
+      ]
+    }
+  }
+}

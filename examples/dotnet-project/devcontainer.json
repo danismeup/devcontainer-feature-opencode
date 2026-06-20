@@ -1,0 +1,33 @@
+// =============================================================================
+// .devcontainer/devcontainer.json — .NET / C# project with OpenCode
+// =============================================================================
+{
+  "name": "${localWorkspaceFolderBasename}-dotnet-dev",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:9.0",
+
+  "features": {
+    "ghcr.io/danismeup/devcontainer-feature-opencode/opencode:1": {
+      "webPort": "4096"
+    },
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "9"
+    }
+  },
+
+  "containerEnv": {
+    "OPENCODE_WEB_PORT": "4096"
+  },
+
+  "forwardPorts": [4096, 5000, 5001],
+
+  "postStartCommand": "opencode-web-start &",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit"
+      ]
+    }
+  }
+}

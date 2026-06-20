@@ -1,0 +1,11 @@
+# Dev Container Feature build artifacts
+.devcontainer-feature-build/
+*.tgz
+
+# Node (if devcontainer CLI is used locally)
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db

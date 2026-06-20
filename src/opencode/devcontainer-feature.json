@@ -1,0 +1,35 @@
+{
+  "id": "opencode",
+  "version": "1.0.0",
+  "name": "OpenCode AI",
+  "description": "Installs OpenCode AI agent and configures it for use in GitHub Codespaces. Supports CLI, TUI and Web UI with persistent session data under /workspaces.",
+  "documentationURL": "https://opencode.ai/docs",
+  "licenseURL": "https://github.com/danismeup/devcontainer-feature-opencode/blob/main/LICENSE",
+  "keywords": ["opencode", "ai", "coding-agent", "llm", "codespaces"],
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of OpenCode to install. Use 'latest' or a specific semver tag (e.g. '0.3.12')."
+    },
+    "webPort": {
+      "type": "string",
+      "default": "4096",
+      "description": "Port on which the OpenCode web UI will be exposed."
+    },
+    "startWebOnCreate": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, adds a postStartCommand that automatically starts the OpenCode web UI."
+    },
+    "dataDirRelative": {
+      "type": "string",
+      "default": ".opencode/data",
+      "description": "Path relative to the workspace folder where OpenCode stores sessions, snapshots and logs. Kept under /workspaces so it survives container rebuilds."
+    }
+  },
+  "containerEnv": {
+    "OPENCODE_DATA_DIR": "/workspaces/${localWorkspaceFolderBasename}/${options.dataDirRelative}"
+  },
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
+}

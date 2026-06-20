@@ -1,0 +1,15 @@
+{
+  "scenarios": [
+    {
+      "name": "latest version default",
+      "options": {}
+    },
+    {
+      "name": "with web auto-start",
+      "options": {
+        "startWebOnCreate": "true",
+        "webPort": "4096"
+      }
+    }
+  ]
+}
